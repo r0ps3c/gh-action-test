@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: callstep1
     steps:
-    - run: echo ${{needs.callstep1.outputs.test}}
+    - run: echo ${{needs.callstep1.outputs.buildout}}
     
     
