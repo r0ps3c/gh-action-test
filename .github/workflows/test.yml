@@ -17,11 +17,6 @@ jobs:
           options: -v ${{ github.workspace }}:/work
           run: |
             touch /work/afile
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
       - uses: addnab/docker-run-action@v3
         with:
           image: ubuntu
