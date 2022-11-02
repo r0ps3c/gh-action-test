@@ -1,0 +1,11 @@
+name: caller
+
+on: workflow_dispatch
+
+jobs:
+  callstep1:
+    uses: ./.github/workflows/test.yml
+  echoer:
+    - run: echo ${{needs.callstep1.outputs.out1}}
+    
+    
