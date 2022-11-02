@@ -1,27 +1,12 @@
 name: CI
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+on: [push, pull_request,workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      test: ${{steps.step2.outputs.out1}}
     steps:
       - uses: actions/checkout@v3
-      - name: touch
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ubuntu
-          options: -v ${{ github.workspace }}:/work
-          run: |
-            touch /work/afile
-      - name: list
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ubuntu
-          options: -v ${{ github.workspace }}:/work
-          run: |
-            ls -l /work/afile
+      - id: step2
+        run: echo "out1=test" >> ${GITHUB_OUTPUT}
