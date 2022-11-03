@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: callstep1
     steps:
-    - run: echo ${{needs.callstep1.outputs.buildout}}
+    - id: step1
+      run: |
+        pwd
+        ls -l
+    - id: step2
+      run: echo ${{needs.callstep1.outputs.buildout}}
     
     
