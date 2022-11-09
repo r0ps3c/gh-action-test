@@ -21,13 +21,13 @@ jobs:
       - id: step3
         run: |
           pwd
-          touch afile
+          touch afile-${{github.ref}}
           ls -l
       - id: step4
         uses: actions/upload-artifact@v3
         with:
           name: afile
-          path: ${{github.workspace}}/afile
+          path: ${{github.workspace}}/afile-${{github.ref}}
   next:
     runs-on: ubuntu-latest
     needs: build
