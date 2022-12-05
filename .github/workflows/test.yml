@@ -28,7 +28,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ubuntu
-          options: -v ${GITHUB_OUTPUT}:/tmp/out
+          options: -v ${{env.GITHUB_OUTPUT}}:/tmp/out
           run: |
             apt update
             apt -y install python3-pip
