@@ -28,10 +28,11 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ubuntu
-          options: -v ${{GITHUB_OUTPUT}}:/tmp/out
+          options: -v $GITHUB_OUTPUT:/tmp/out
           run: |
             apt update
             apt -y install python3-pip
+            cat /proc/mounts
             python3 -c 'print("here=here")' >> /tmp/out
       - id: step3
         run: |
