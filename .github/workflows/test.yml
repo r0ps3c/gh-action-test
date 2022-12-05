@@ -21,17 +21,18 @@ jobs:
         shell: python
         run: |
           import os
+          print("GHO={}".format(os.environ["GITHUB_OUTPUT"]))
           with open(os.environ["GITHUB_OUTPUT"], "a+") as fout:
             fout.write("out1={}".format("test"))
       - id: step2a
         uses: addnab/docker-run-action@v3
         with:
           image: ubuntu
+          options: -v ${GITHUB_OUTPUT}:/tmp/out
           run: |
             apt update
             apt -y install python3-pip
-            echo ${GITHUB_OUTPUT}
-            python3 -c 'print("here=here")' >> ${GITHUB_OUTPUT}
+            python3 -c 'print("here=here")' >> /tmp/out
       - id: step3
         run: |
           pwd
