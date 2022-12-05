@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       test: ${{steps.step2.outputs.out1}}
+      here: ${{steps.step2a.outputs.here}}
     steps:
       - uses: actions/checkout@v3
       - id: step2
@@ -29,7 +30,7 @@ jobs:
           run: |
             apt update
             apt -y install python3-pip
-            python3 -c 'print("here")'
+            python3 -c 'print("here=here")' >> ${GITHUB_OUTPUT}
       - id: step3
         run: |
           pwd
