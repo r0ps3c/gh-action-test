@@ -30,6 +30,7 @@ jobs:
           run: |
             apt update
             apt -y install python3-pip
+            echo ${GITHUB_OUTPUT}
             python3 -c 'print("here=here")' >> ${GITHUB_OUTPUT}
       - id: step3
         run: |
