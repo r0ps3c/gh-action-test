@@ -22,6 +22,14 @@ jobs:
           import os
           with open(os.environ["GITHUB_OUTPUT"], "a+") as fout:
             fout.write("out1={}".format("test"))
+      - id: step2a
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ubuntu
+          run: |
+            apt update
+            apt -y install python3-pip
+            python3 -c 'print("here")'
       - id: step3
         run: |
           pwd
