@@ -11,7 +11,6 @@ on:
     outputs:
       buildout: 
         value: ${{jobs.build.outputs.test}}
-    
 
 jobs:
   build:
@@ -25,7 +24,6 @@ jobs:
         shell: python
         run: |
           import os
-          print("GHO={}".format(os.environ["GITHUB_OUTPUT"]))
           with open(os.environ["GITHUB_OUTPUT"], "a+") as fout:
             fout.write("out1={}".format("test"))
       - id: step2a
